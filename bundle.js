@@ -147,7 +147,11 @@
 			var hashURL = window.location.origin+window.location.pathname+'#'+this.state.hash;
 			return(
 				React.createElement("div", {className: "app"}, 
-					React.createElement("h1", null, "1 8 3"), 
+					React.createElement("h1", null, "最近一年居住國內超過183日試算器"), 
+	                React.createElement("h3", null, "1.社會救助法第4條第5項規定略以，(中)低收入戶申請人最近一年居住國內應超過183日。"), 
+	                React.createElement("h3", null, "2.「出境日」視為未居住國內，「入境日」視為居住國內。"), 
+	                React.createElement("h3", null, "3.本程式僅提供簡易試算功能，實際結果仍須經主關機關核算認定。"), 
+	                React.createElement("br", null), 
 
 					React.createElement(Inputs, {setRecords: this.setRecords, addRecord: this.addRecord}), 
 					"日期格式: 1030602", React.createElement("br", null), 
@@ -169,6 +173,7 @@
 					React.createElement("br", null), 
 					React.createElement("br", null), 
 					React.createElement("div", {className: "tips"}, 
+	                  React.createElement("h2", null, "操作說明"), React.createElement("br", null), 
 						React.createElement("p", null, 
 							"輸入框中", React.createElement("br", null), 
 							"按 Q 或 Numpad+ 可切換為 [入境]", React.createElement("br", null), 
@@ -178,7 +183,20 @@
 						React.createElement("p", null, 
 							"記錄的出入境標記可點擊以切換", React.createElement("br", null), 
 							"Ctrl-點擊記錄的移除標記可略過確認框"
-						)
+						), 
+	                    React.createElement("br", null), 
+	                  
+	                  React.createElement("h2", null, "一、移民署格式匯入（承辦作業專用）"), 
+	                    
+	                    React.createElement("p", null, "1.已取得內政部移民署線上應用服務系統帳號，並有入出境資訊查詢權限者，可透過該系統查詢歷次出入境紀錄。"), 
+	                    React.createElement("p", null, "2.將該系統產出之歷次出入境紀錄，整批複製並貼上到183日試算系統欄位，即可運算是否符合最近一年居住國內超過183日之規定。"), 
+	                    React.createElement("br", null), 
+	                  
+	                  React.createElement("h2", null, "二、手動輸入"), 
+	                    
+	                    React.createElement("p", null, "1.點選「出境」或「入境」後，輸入對應之出境或入境日期，再點選「加入」。"), 
+	                    React.createElement("p", null, "2.日期格式範例：如為105年1月1日，則輸入「1050101」"), 
+	                    React.createElement("p", null, "3.將歷次出入境紀錄依序輸入完畢後，即可運算是否符合最近一年居住國內超過183日之規定。")
 					), 
 					React.createElement("br", null), 
 					React.createElement("a", {href: "https://github.com/scars377/days183", style: {fontSize:'12px'}, target: "_blank"}, 
@@ -1132,7 +1150,7 @@
 
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n.records {\n  position: relative;\n  width: 460px;\n  border: 3px solid #666;\n  display: inline-block;\n  margin: 32px 0; }\n  @media (max-width: 768px) {\n    .records {\n      border-width: 1px;\n      width: 316px; } }\n  .records .conflict {\n    color: #f96; }\n\n/*\r\n██████  ███████  ██████  ██████  ██████  ██████\r\n██   ██ ██      ██      ██    ██ ██   ██ ██   ██\r\n██████  █████   ██      ██    ██ ██████  ██   ██\r\n██   ██ ██      ██      ██    ██ ██   ██ ██   ██\r\n██   ██ ███████  ██████  ██████  ██   ██ ██████\r\n*/\n.record {\n  font-size: 18px;\n  position: relative;\n  width: 100%;\n  padding: 4px 16px;\n  box-sizing: border-box;\n  text-align: left;\n  /*\r\n\t██████   █████  ████████ ███████\r\n\t██   ██ ██   ██    ██    ██\r\n\t██   ██ ███████    ██    █████\r\n\t██   ██ ██   ██    ██    ██\r\n\t██████  ██   ██    ██    ███████\r\n\t*/\n  /*\r\n\t ██████ ██       ██████  ███████ ███████\r\n\t██      ██      ██    ██ ██      ██\r\n\t██      ██      ██    ██ ███████ █████\r\n\t██      ██      ██    ██      ██ ██\r\n\t ██████ ███████  ██████  ███████ ███████\r\n\t*/ }\n  @media (max-width: 768px) {\n    .record {\n      font-size: 16px;\n      padding: 8px;\n      line-height: 22px;\n      text-align: center; } }\n  .record.dep {\n    background-color: #3a3333; }\n  .record.arr {\n    background-color: #333a33; }\n  .record.conflict {\n    background-color: #930; }\n  .record > span {\n    display: inline-block;\n    text-align: center;\n    vertical-align: middle; }\n  .record .date {\n    margin-right: 12px; }\n  .record .dep,\n  .record .arr {\n    font-size: 12px;\n    width: 32px;\n    height: 20px;\n    line-height: 20px;\n    border-radius: 4px;\n    color: #000;\n    cursor: pointer;\n    margin-right: 12px; }\n    @media (max-width: 768px) {\n      .record .dep,\n      .record .arr {\n        width: 30px;\n        height: 18px;\n        line-height: 18px; } }\n  .record .dep {\n    background-color: #f99; }\n    .record .dep:before {\n      content: '\\51FA\\5883'; }\n  .record .arr {\n    background-color: #9f9; }\n    .record .arr:before {\n      content: '\\5165\\5883'; }\n  .record.conflict > .close {\n    border: 1px solid #fff; }\n  .record .close {\n    width: 14px;\n    height: 14px;\n    margin-right: 16px;\n    border: 1px solid transparent;\n    border-radius: 50%;\n    background-color: #c44;\n    cursor: pointer;\n    display: inline-block;\n    position: relative;\n    opacity: .3; }\n    .record .close:hover {\n      opacity: 1; }\n    @media (max-width: 768px) {\n      .record .close {\n        opacity: 1;\n        margin-right: 8px; } }\n    .record .close:before {\n      width: 8px;\n      height: 2px;\n      background-color: #fff;\n      display: block;\n      position: absolute;\n      left: 3px;\n      top: 6px;\n      content: ''; }\n  .record .qualify {\n    display: inline-block;\n    font-size: 14px; }\n    @media (max-width: 768px) {\n      .record .qualify {\n        font-size: 12px;\n        display: block; } }\n    .record .qualify > span {\n      display: inline-block;\n      vertical-align: middle; }\n    .record .qualify .status:after {\n      content: '\\4E0D\\7B26\\5408\\8CC7\\683C'; }\n    .record .qualify .status.qualified:after {\n      content: '\\3000\\7B26\\5408\\8CC7\\683C'; }\n    .record .qualify .invert:before {\n      content: ', '; }\n    .record .qualify .invert:after {\n      content: ' \\5F8C\\8A3B\\92B7\\8CC7\\683C'; }\n    .record .qualify .invert.qualified:after {\n      content: ' \\5F8C\\7B26\\5408\\8CC7\\683C'; }\n    .record .qualify .invert.empty {\n      display: none; }\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n.records {\n  position: relative;\n  width: 460px;\n  border: 3px solid #666;\n  display: inline-block;\n  margin: 32px 0; }\n  @media (max-width: 768px) {\n    .records {\n      border-width: 1px;\n      width: 316px; } }\n  .records .conflict {\n    color: #f96; }\n\n/*\r\n██████  ███████  ██████  ██████  ██████  ██████\r\n██   ██ ██      ██      ██    ██ ██   ██ ██   ██\r\n██████  █████   ██      ██    ██ ██████  ██   ██\r\n██   ██ ██      ██      ██    ██ ██   ██ ██   ██\r\n██   ██ ███████  ██████  ██████  ██   ██ ██████\r\n*/\n.record {\n  font-size: 18px;\n  position: relative;\n  width: 100%;\n  padding: 4px 16px;\n  box-sizing: border-box;\n  text-align: left;\n  /*\r\n\t██████   █████  ████████ ███████\r\n\t██   ██ ██   ██    ██    ██\r\n\t██   ██ ███████    ██    █████\r\n\t██   ██ ██   ██    ██    ██\r\n\t██████  ██   ██    ██    ███████\r\n\t*/\n  /*\r\n\t ██████ ██       ██████  ███████ ███████\r\n\t██      ██      ██    ██ ██      ██\r\n\t██      ██      ██    ██ ███████ █████\r\n\t██      ██      ██    ██      ██ ██\r\n\t ██████ ███████  ██████  ███████ ███████\r\n\t*/ }\n  @media (max-width: 768px) {\n    .record {\n      font-size: 16px;\n      padding: 8px;\n      line-height: 22px;\n      text-align: center; } }\n  .record.dep {\n    background-color: #3a3333; }\n  .record.arr {\n    background-color: #333a33; }\n  .record.conflict {\n    background-color: #930; }\n  .record > span {\n    display: inline-block;\n    text-align: center;\n    vertical-align: middle; }\n  .record .date {\n    margin-right: 12px; }\n  .record .dep,\n  .record .arr {\n    font-size: 12px;\n    width: 32px;\n    height: 20px;\n    line-height: 20px;\n    border-radius: 4px;\n    color: #000;\n    cursor: pointer;\n    margin-right: 12px; }\n    @media (max-width: 768px) {\n      .record .dep,\n      .record .arr {\n        width: 30px;\n        height: 18px;\n        line-height: 18px; } }\n  .record .dep {\n    background-color: #f99; }\n    .record .dep:before {\n      content: '\\51FA\\5883'; }\n  .record .arr {\n    background-color: #9f9; }\n    .record .arr:before {\n      content: '\\5165\\5883'; }\n  .record.conflict > .close {\n    border: 1px solid #fff; }\n  .record .close {\n    width: 14px;\n    height: 14px;\n    margin-right: 16px;\n    border: 1px solid transparent;\n    border-radius: 50%;\n    background-color: #c44;\n    cursor: pointer;\n    display: inline-block;\n    position: relative;\n    opacity: .3; }\n    .record .close:hover {\n      opacity: 1; }\n    @media (max-width: 768px) {\n      .record .close {\n        opacity: 1;\n        margin-right: 8px; } }\n    .record .close:before {\n      width: 8px;\n      height: 2px;\n      background-color: #fff;\n      display: block;\n      position: absolute;\n      left: 3px;\n      top: 6px;\n      content: ''; }\n  .record .qualify {\n    display: inline-block;\n    font-size: 14px; }\n    @media (max-width: 768px) {\n      .record .qualify {\n        font-size: 12px;\n        display: block; } }\n    .record .qualify > span {\n      display: inline-block;\n      vertical-align: middle; }\n    .record .qualify .status:after {\n      content: '\\4E0D\\7B26\\898F\\5B9A'; }\n    .record .qualify .status.qualified:after {\n      content: '\\3000\\7B26\\5408\\898F\\5B9A'; }\n    .record .qualify .invert:before {\n      content: ', '; }\n    .record .qualify .invert:after {\n      content: ' \\5F8C\\4E0D\\7B26\\898F\\5B9A'; }\n    .record .qualify .invert.qualified:after {\n      content: ' \\5F8C\\7B26\\5408\\8CC7\\683C'; }\n    .record .qualify .invert.empty {\n      display: none; }\n", ""]);
 
 	// exports
 
