@@ -46,6 +46,14 @@ var App = React.createClass({
 		rr.splice(idx,1)
 		this.setRecords(rr)
 	},
+    removeAllRecord:function(){
+        if(confirm('是否清空紀錄') == true){
+          this.setState({
+			records: [],
+			hash: ''
+		  });   
+        }
+    },
 	toggleRecord:function(idx){
 		var rr = this.state.records;
 		rr[idx].dep = !rr[idx].dep;
@@ -95,14 +103,14 @@ var App = React.createClass({
 		return(
 			<div className='app'>
 				<h1>最近一年居住國內超過183日試算器</h1>
-                <h3>1.社會救助法第4條第5項規定略以，(中)低收入戶申請人最近一年居住國內應超過183日。</h3>
-                <h3>2.「出境日」視為未居住國內，「入境日」視為居住國內。</h3>
-                <h3>3.本程式僅提供簡易試算功能，實際結果仍須經主關機關核算認定。</h3>
-                <br/>
+                    <h3>1.社會救助法第4條第5項規定略以，(中)低收入戶申請人最近一年居住國內應超過183日。</h3> <br/>
+                    <h3>2.「出境日」視為未居住國內，「入境日」視為居住國內。</h3> <br/>
+                    <h3>3.本程式僅提供簡易試算功能，實際結果仍須經主關機關核算認定。</h3>
+                    <br/>
 
-				<Inputs setRecords={this.setRecords} addRecord={this.addRecord}/>
-				日期格式: 1030602<br/>
-
+                    <Inputs setRecords={this.setRecords} addRecord={this.addRecord} removeAllRecord={this.removeAllRecord}/>
+                    日期格式: 1030602<br/>
+              
 
 				<Records
 					records={this.state.records}
