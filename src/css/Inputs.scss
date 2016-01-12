@@ -1,4 +1,12 @@
-$font-family: 'Consolas','Microsoft JhengHei';
+$font-family: 'Verdana','Microsoft JhengHei';
+
+.paste-input{
+	width: 60%;
+	max-width: 800px;
+	min-width: 290px;
+	// same as .title-info in App.scss
+	height: 200px;
+}
 
 input[type='text']{
 	vertical-align: middle;

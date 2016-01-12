@@ -118,7 +118,7 @@ var Inputs = React.createClass({
 						debugger;
 					}
 				}
-				
+
 			}
 		});
 
@@ -132,7 +132,12 @@ var Inputs = React.createClass({
 		return(
 			<div>
 				<h2>移民署格式匯入（承辦作業專用）</h2>
-				<textarea ref="import" onChange={this.importFromText} style={{width:"60%",height:"200px"}} ></textarea>
+				<textarea
+					className='paste-input'
+					ref = "import"
+					onChange = {this.importFromText}
+					/>
+
 
 				<hr />
 
