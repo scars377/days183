@@ -124,11 +124,6 @@ var Inputs = React.createClass({
 
 
 		this.props.setRecords(records);
-
-		// date:this.getDateFromString(this.state.input),
-		// dep: this.state.dep,
-
-		// this.props.setRecords();
 	},
 	componentDidMount: function() {
 		ReactDOM.findDOMNode(this.refs.input).focus();
@@ -171,6 +166,12 @@ var Inputs = React.createClass({
 						onClick={this.addRecord}
 						>
 						加入
+					</button>
+                    <button
+						className='enabled'
+						onClick={this.props.removeAllRecord}
+						>
+						清空紀錄
 					</button>
 				</div>
 				<hr />

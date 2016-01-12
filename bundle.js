@@ -99,6 +99,14 @@
 			rr.splice(idx,1)
 			this.setRecords(rr)
 		},
+	    removeAllRecord:function(){
+	        if(confirm('是否清空紀錄') == true){
+	          this.setState({
+				records: [],
+				hash: ''
+			  });   
+	        }
+	    },
 		toggleRecord:function(idx){
 			var rr = this.state.records;
 			rr[idx].dep = !rr[idx].dep;
@@ -153,7 +161,7 @@
 	                React.createElement("h3", null, "3.本程式僅提供簡易試算功能，實際結果仍須經主關機關核算認定。"), 
 	                React.createElement("br", null), 
 
-					React.createElement(Inputs, {setRecords: this.setRecords, addRecord: this.addRecord}), 
+					React.createElement(Inputs, {setRecords: this.setRecords, addRecord: this.addRecord, removeAllRecord: this.removeAllRecord}), 
 					"日期格式: 1030602", React.createElement("br", null), 
 
 
@@ -716,11 +724,6 @@
 
 
 			this.props.setRecords(records);
-
-			// date:this.getDateFromString(this.state.input),
-			// dep: this.state.dep,
-
-			// this.props.setRecords();
 		},
 		componentDidMount: function() {
 			ReactDOM.findDOMNode(this.refs.input).focus();
@@ -763,6 +766,12 @@
 							onClick: this.addRecord
 							}, 
 							"加入"
+						), 
+	                    React.createElement("button", {
+							className: "enabled", 
+							onClick: this.props.removeAllRecord
+							}, 
+							"清空紀錄"
 						)
 					), 
 					React.createElement("hr", null)
@@ -1150,7 +1159,7 @@
 
 
 	// module
-	exports.push([module.id, "@charset \"UTF-8\";\n.records {\n  position: relative;\n  width: 460px;\n  border: 3px solid #666;\n  display: inline-block;\n  margin: 32px 0; }\n  @media (max-width: 768px) {\n    .records {\n      border-width: 1px;\n      width: 316px; } }\n  .records .conflict {\n    color: #f96; }\n\n/*\r\n██████  ███████  ██████  ██████  ██████  ██████\r\n██   ██ ██      ██      ██    ██ ██   ██ ██   ██\r\n██████  █████   ██      ██    ██ ██████  ██   ██\r\n██   ██ ██      ██      ██    ██ ██   ██ ██   ██\r\n██   ██ ███████  ██████  ██████  ██   ██ ██████\r\n*/\n.record {\n  font-size: 18px;\n  position: relative;\n  width: 100%;\n  padding: 4px 16px;\n  box-sizing: border-box;\n  text-align: left;\n  /*\r\n\t██████   █████  ████████ ███████\r\n\t██   ██ ██   ██    ██    ██\r\n\t██   ██ ███████    ██    █████\r\n\t██   ██ ██   ██    ██    ██\r\n\t██████  ██   ██    ██    ███████\r\n\t*/\n  /*\r\n\t ██████ ██       ██████  ███████ ███████\r\n\t██      ██      ██    ██ ██      ██\r\n\t██      ██      ██    ██ ███████ █████\r\n\t██      ██      ██    ██      ██ ██\r\n\t ██████ ███████  ██████  ███████ ███████\r\n\t*/ }\n  @media (max-width: 768px) {\n    .record {\n      font-size: 16px;\n      padding: 8px;\n      line-height: 22px;\n      text-align: center; } }\n  .record.dep {\n    background-color: #3a3333; }\n  .record.arr {\n    background-color: #333a33; }\n  .record.conflict {\n    background-color: #930; }\n  .record > span {\n    display: inline-block;\n    text-align: center;\n    vertical-align: middle; }\n  .record .date {\n    margin-right: 12px; }\n  .record .dep,\n  .record .arr {\n    font-size: 12px;\n    width: 32px;\n    height: 20px;\n    line-height: 20px;\n    border-radius: 4px;\n    color: #000;\n    cursor: pointer;\n    margin-right: 12px; }\n    @media (max-width: 768px) {\n      .record .dep,\n      .record .arr {\n        width: 30px;\n        height: 18px;\n        line-height: 18px; } }\n  .record .dep {\n    background-color: #f99; }\n    .record .dep:before {\n      content: '\\51FA\\5883'; }\n  .record .arr {\n    background-color: #9f9; }\n    .record .arr:before {\n      content: '\\5165\\5883'; }\n  .record.conflict > .close {\n    border: 1px solid #fff; }\n  .record .close {\n    width: 14px;\n    height: 14px;\n    margin-right: 16px;\n    border: 1px solid transparent;\n    border-radius: 50%;\n    background-color: #c44;\n    cursor: pointer;\n    display: inline-block;\n    position: relative;\n    opacity: .3; }\n    .record .close:hover {\n      opacity: 1; }\n    @media (max-width: 768px) {\n      .record .close {\n        opacity: 1;\n        margin-right: 8px; } }\n    .record .close:before {\n      width: 8px;\n      height: 2px;\n      background-color: #fff;\n      display: block;\n      position: absolute;\n      left: 3px;\n      top: 6px;\n      content: ''; }\n  .record .qualify {\n    display: inline-block;\n    font-size: 14px; }\n    @media (max-width: 768px) {\n      .record .qualify {\n        font-size: 12px;\n        display: block; } }\n    .record .qualify > span {\n      display: inline-block;\n      vertical-align: middle; }\n    .record .qualify .status:after {\n      content: '\\4E0D\\7B26\\898F\\5B9A'; }\n    .record .qualify .status.qualified:after {\n      content: '\\3000\\7B26\\5408\\898F\\5B9A'; }\n    .record .qualify .invert:before {\n      content: ', '; }\n    .record .qualify .invert:after {\n      content: ' \\5F8C\\4E0D\\7B26\\898F\\5B9A'; }\n    .record .qualify .invert.qualified:after {\n      content: ' \\5F8C\\7B26\\5408\\8CC7\\683C'; }\n    .record .qualify .invert.empty {\n      display: none; }\n", ""]);
+	exports.push([module.id, "@charset \"UTF-8\";\n.records {\n  position: relative;\n  width: 460px;\n  border: 3px solid #666;\n  display: inline-block;\n  margin: 32px 0; }\n  @media (max-width: 768px) {\n    .records {\n      border-width: 1px;\n      width: 316px; } }\n  .records .conflict {\n    color: #f96; }\n\n/*\r\n██████  ███████  ██████  ██████  ██████  ██████\r\n██   ██ ██      ██      ██    ██ ██   ██ ██   ██\r\n██████  █████   ██      ██    ██ ██████  ██   ██\r\n██   ██ ██      ██      ██    ██ ██   ██ ██   ██\r\n██   ██ ███████  ██████  ██████  ██   ██ ██████\r\n*/\n.record {\n  font-size: 18px;\n  position: relative;\n  width: 100%;\n  padding: 4px 16px;\n  box-sizing: border-box;\n  text-align: left;\n  /*\r\n\t██████   █████  ████████ ███████\r\n\t██   ██ ██   ██    ██    ██\r\n\t██   ██ ███████    ██    █████\r\n\t██   ██ ██   ██    ██    ██\r\n\t██████  ██   ██    ██    ███████\r\n\t*/\n  /*\r\n\t ██████ ██       ██████  ███████ ███████\r\n\t██      ██      ██    ██ ██      ██\r\n\t██      ██      ██    ██ ███████ █████\r\n\t██      ██      ██    ██      ██ ██\r\n\t ██████ ███████  ██████  ███████ ███████\r\n\t*/ }\n  @media (max-width: 768px) {\n    .record {\n      font-size: 16px;\n      padding: 8px;\n      line-height: 22px;\n      text-align: center; } }\n  .record.dep {\n    background-color: #3a3333; }\n  .record.arr {\n    background-color: #333a33; }\n  .record.conflict {\n    background-color: #930; }\n  .record > span {\n    display: inline-block;\n    text-align: center;\n    vertical-align: middle; }\n  .record .date {\n    margin-right: 12px; }\n  .record .dep,\n  .record .arr {\n    font-size: 12px;\n    width: 32px;\n    height: 20px;\n    line-height: 20px;\n    border-radius: 4px;\n    color: #000;\n    cursor: pointer;\n    margin-right: 12px; }\n    @media (max-width: 768px) {\n      .record .dep,\n      .record .arr {\n        width: 30px;\n        height: 18px;\n        line-height: 18px; } }\n  .record .dep {\n    background-color: #f99; }\n    .record .dep:before {\n      content: '\\51FA\\5883'; }\n  .record .arr {\n    background-color: #9f9; }\n    .record .arr:before {\n      content: '\\5165\\5883'; }\n  .record.conflict > .close {\n    border: 1px solid #fff; }\n  .record .close {\n    width: 14px;\n    height: 14px;\n    margin-right: 16px;\n    border: 1px solid transparent;\n    border-radius: 50%;\n    background-color: #c44;\n    cursor: pointer;\n    display: inline-block;\n    position: relative;\n    opacity: .3; }\n    .record .close:hover {\n      opacity: 1; }\n    @media (max-width: 768px) {\n      .record .close {\n        opacity: 1;\n        margin-right: 8px; } }\n    .record .close:before {\n      width: 8px;\n      height: 2px;\n      background-color: #fff;\n      display: block;\n      position: absolute;\n      left: 3px;\n      top: 6px;\n      content: ''; }\n  .record .qualify {\n    display: inline-block;\n    font-size: 14px; }\n    @media (max-width: 768px) {\n      .record .qualify {\n        font-size: 12px;\n        display: block; } }\n    .record .qualify > span {\n      display: inline-block;\n      vertical-align: middle; }\n    .record .qualify .status:after {\n      content: '\\4E0D\\7B26\\898F\\5B9A'; }\n    .record .qualify .status.qualified:after {\n      content: '\\3000\\7B26\\5408\\898F\\5B9A'; }\n    .record .qualify .invert:before {\n      content: ', '; }\n    .record .qualify .invert:after {\n      content: ' \\5F8C\\4E0D\\7B26\\898F\\5B9A'; }\n    .record .qualify .invert.qualified:after {\n      content: ' \\5F8C\\7B26\\5408\\898F\\5B9A'; }\n    .record .qualify .invert.empty {\n      display: none; }\n", ""]);
 
 	// exports
 
