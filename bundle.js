@@ -156,14 +156,14 @@
 			return(
 				React.createElement("div", {className: "app"}, 
 					React.createElement("h1", null, "最近一年居住國內超過183日試算器"), 
-	                React.createElement("h3", null, "1.社會救助法第4條第5項規定略以，(中)低收入戶申請人最近一年居住國內應超過183日。"), 
-	                React.createElement("h3", null, "2.「出境日」視為未居住國內，「入境日」視為居住國內。"), 
-	                React.createElement("h3", null, "3.本程式僅提供簡易試算功能，實際結果仍須經主關機關核算認定。"), 
-	                React.createElement("br", null), 
+	                    React.createElement("h3", null, "1.社會救助法第4條第5項規定略以，(中)低收入戶申請人最近一年居住國內應超過183日。"), " ", React.createElement("br", null), 
+	                    React.createElement("h3", null, "2.「出境日」視為未居住國內，「入境日」視為居住國內。"), " ", React.createElement("br", null), 
+	                    React.createElement("h3", null, "3.本程式僅提供簡易試算功能，實際結果仍須經主關機關核算認定。"), 
+	                    React.createElement("br", null), 
 
-					React.createElement(Inputs, {setRecords: this.setRecords, addRecord: this.addRecord, removeAllRecord: this.removeAllRecord}), 
-					"日期格式: 1030602", React.createElement("br", null), 
-
+	                    React.createElement(Inputs, {setRecords: this.setRecords, addRecord: this.addRecord, removeAllRecord: this.removeAllRecord}), 
+	                    "日期格式: 1030602", React.createElement("br", null), 
+	              
 
 					React.createElement(Records, {
 						records: this.state.records, 
@@ -273,7 +273,7 @@
 
 
 	// module
-	exports.push([module.id, "body {\n  background-color: #333;\n  color: #fff;\n  font-family: \"Consolas\", \"Microsoft JhengHei\"; }\n\n.app {\n  line-height: 30px;\n  text-align: center;\n  padding: 12px 0; }\n\nh1 {\n  font-size: 48px;\n  font-family: 'Arial Black';\n  font-weight: bold;\n  margin-bottom: 48px;\n  -webkit-filter: drop-shadow(2px 2px 1px #000);\n          filter: drop-shadow(2px 2px 1px #000); }\n\na {\n  color: #69f; }\n\n.tips {\n  width: auto;\n  padding: 8px 16px;\n  display: inline-block;\n  background-color: #444;\n  text-align: left;\n  line-height: 14px;\n  font-size: 12px;\n  color: #ccc; }\n", ""]);
+	exports.push([module.id, "body {\n  background-color: #333;\n  color: #fff;\n  font-family: \"Microsoft JhengHei,DFKai-sb\"; }\n\n.app {\n  line-height: 30px;\n  text-align: center;\n  padding: 12px 0; }\n\nh1 {\n  font-size: 48px;\n  font-weight: bold;\n  margin-bottom: 48px;\n  -webkit-filter: drop-shadow(2px 2px 1px #000);\n          filter: drop-shadow(2px 2px 1px #000); }\n\nh3 {\n  float: left;\n  margin-left: 255px; }\n\na {\n  color: #69f; }\n\n.tips {\n  width: auto;\n  padding: 8px 16px;\n  display: inline-block;\n  background-color: #444;\n  text-align: left;\n  line-height: 14px;\n  font-size: 12px;\n  color: #ccc; }\n", ""]);
 
 	// exports
 
