@@ -1,4 +1,4 @@
-$font-family: 'Consolas','Microsoft JhengHei';
+$font-family: 'Microsoft JhengHei,DFKai-sb';
 
 body{
 	background-color: #333;
@@ -14,10 +14,14 @@ body{
 
 h1{
 	font-size: 48px;
-	font-family: 'Arial Black';
 	font-weight: bold;
 	margin-bottom: 48px;
 	filter: drop-shadow(2px 2px 1px #000);
+}
+
+h3{
+    float:left;
+    margin-left: 255px;
 }
 
 
