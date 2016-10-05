@@ -100,6 +100,12 @@ function calcRecord(r,rt){
 
 		//最前區間-1 最後區間+1 while到 qualified 反轉為止
 		do{
+/*
+TonyQ: 針對特殊情況 rt[0]days 剛好是 0 ， -1 造成負數的無窮回圈問題
+test case #PJk8nkCdQfJCBw==
+*/
+			if(rt[0].days==0) rt.shift() ; 
+
 			rt[0].days-=1;
 			if(rt[0].days==0) rt.shift()
 			lastDur.days+=1;
