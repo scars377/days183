@@ -7,9 +7,11 @@
     "gulp-util": "^3.0.7",
     "json-loader": "^0.5.3",
     "jsx-loader": "^0.13.2",
+    "node-sass": "^4.14.0",
     "sass-loader": "^3.1.1",
     "style-loader": "^0.13.0",
-    "webpack": "^1.12.6",
+    "webpack": "^1.15.0",
+    "webpack-cli": "^3.3.11",
     "webpack-dev-server": "^1.12.1"
   },
   "engines": {

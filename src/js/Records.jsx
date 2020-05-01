@@ -63,12 +63,15 @@ function calcRecord(r,rt){
 	})
 
 
+	var full_year_days = getYearDaysByTime(r.date);
+	console.log(r.date,full_year_days);
+
 
 	//把區間縮減到最後一筆記錄的一年內
 	var days=0;
 	for(var i=rt.length-1;i>=0;i--){
-		if(days + rt[i].days > 365){
-			rt[i].days = 365-days
+		if(days + rt[i].days > full_year_days){
+			rt[i].days = full_year_days - days
 			rt.splice(0,i)
 			break;
 		}
@@ -114,11 +117,28 @@ test case #PJk8nkCdQfJCBw==
 		//最後記錄時間加上最後區間的天數即為反轉日期
 		var t = r.date.getTime()+lastDur.days*86400000;
 		r.invertDate = new Date(t);
+		var diff_year_days = getYearDaysByTime(r) - getYearDaysByTime(t);
+		r.invertDate.setDate(r.invertDate.getDate() + diff_year_days);
+		console.log(diff_year_days);
+
 	}
 }
 
 
 
+function countDays(d1,d2){
+	return Math.abs(Math.round((d1.getTime()-d2.getTime())/86400000));
+}
+
+function getYearDaysByTime(d){
+	
+
+	var one_year_ago = new Date(d.getTime());
+	one_year_ago.setFullYear(one_year_ago.getFullYear() -1);
+
+	var full_year_days = countDays(d,one_year_ago);
+	return full_year_days;
+}
 
 
 /*
@@ -130,6 +150,7 @@ test case #PJk8nkCdQfJCBw==
 */
 //直接 modify rr
 function calcRecords(rr){
+	console.log(rr);
 	if(rr.length==0) return rr;
 
 	//偵測衝突
@@ -146,17 +167,20 @@ function calcRecords(rr){
 	//以出入境紀錄算出在境/離境區間
 	var rt=[];
 	for(var i=0;i < rr.length-1;i++){
-		var days = Math.round((rr[i+1].date.getTime()-rr[i].date.getTime())/86400000);
+		var days = countDays(rr[i+1].date,rr[i].date);
 		rt.push({
 			dep:rr[i].dep,
 			days: days
 		})
 	}
+
+
+
 	//在最前面插入一整年的區間
 	//例如第一筆資料是出境，就當作在這之前都是在境
 	rt.unshift({
 		dep:!rr[0].dep,
-		days:365
+		days:366
 	})
 	//至此 rr 跟 rt 的 length 應該一樣
 
